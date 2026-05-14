@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Rahofa — May 15</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #1a0f14;
+      --bg-card: rgba(255, 248, 252, 0.06);
+      --rose: #e8a0b8;
+      --rose-deep: #c76b8a;
+      --gold: #d4af6a;
+      --cream: #fff8f5;
+      --muted: rgba(255, 248, 252, 0.72);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      background: var(--bg-deep);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient glow */
+    .glow-orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: float-orb 18s ease-in-out infinite;
+    }
+
+    .orb:nth-child(1) {
+      width: 40vmin;
+      height: 40vmin;
+      background: #6b2d4a;
+      top: -10%;
+      left: -5%;
+      animation-delay: 0s;
+    }
+
+    .orb:nth-child(2) {
+      width: 35vmin;
+      height: 35vmin;
+      background: #3d1f35;
+      bottom: 10%;
+      right: -8%;
+      animation-delay: -6s;
+    }
+
+    .orb:nth-child(3) {
+      width: 28vmin;
+      height: 28vmin;
+      background: #8b4a6b;
+      top: 40%;
+      left: 50%;
+      animation-delay: -12s;
+    }
+
+    @keyframes float-orb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(3%, 5%) scale(1.05); }
+      66% { transform: translate(-4%, -3%) scale(0.95); }
+    }
+
+    /* Hearts */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -2rem;
+      font-size: clamp(0.75rem, 2vw, 1.25rem);
+      opacity: 0;
+      animation: rise 12s linear infinite;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      8% { opacity: 0.55; }
+      90% { opacity: 0.4; }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 5vw, 3rem);
+      padding-bottom: 5rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: clamp(2rem, 8vw, 4rem) 0;
+      animation: hero-in 1.2s ease-out both;
+    }
+
+    @keyframes hero-in {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      animation: pulse-soft 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--rose) 45%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .date {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .music-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      padding: 0.85rem 1.6rem;
+      background: linear-gradient(135deg, var(--rose-deep), #8e3d5c);
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      box-shadow: 0 8px 32px rgba(199, 107, 138, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: hero-in 1.2s ease-out 0.3s both;
+    }
+
+    .music-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(199, 107, 138, 0.45);
+    }
+
+    .music-cta svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .section {
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      background: var(--bg-card);
+      border: 1px solid rgba(232, 160, 184, 0.15);
+      border-radius: 1.25rem;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.5rem, 4vw, 1.85rem);
+      font-weight: 600;
+      color: var(--rose);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .section p + p {
+      margin-top: 1rem;
+    }
+
+    .memories {
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .memories h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.1rem);
+      text-align: center;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 640px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .gallery figure {
+      position: relative;
+      border-radius: 0.85rem;
+      overflow: hidden;
+      aspect-ratio: 1;
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .gallery.visible figure {
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: calc(var(--stagger, 0) * 28ms);
+    }
+
+    .gallery figure:hover {
+      box-shadow: 0 12px 36px rgba(232, 160, 184, 0.25);
+      z-index: 1;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.7rem;
+      color: var(--cream);
+      background: linear-gradient(transparent, rgba(26, 15, 20, 0.85));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery figure:hover figcaption {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(232, 160, 184, 0.12);
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    footer .heart-inline {
+      color: var(--rose-deep);
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orbs" aria-hidden="true">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <main>
+    <header class="hero">
+      <span class="badge">May 15</span>
+      <h1>Happy Birthday,<br />Rahofa</h1>
+      <p class="date">A small corner of the internet, just for you</p>
+      <a
+        class="music-cta"
+        href="https://music.youtube.com/watch?v=Q3Ug94p5JT0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6zm-2 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+        </svg>
+        Play our song on YouTube Music
+      </a>
+    </header>
+
+    <section class="section" data-reveal>
+      <h2><span aria-hidden="true">❤️</span> rahoooooooooooooofaaaaaaaaa</h2>
+      <p>
+        I love you so much, and I’m truly grateful to have you in my life. You’re not just an amazing friend, you’re the person who always supports me, listens to me, and understands me even without words. Your presence brings me comfort and makes me feel safe and understood.
+      </p>
+    </section>
+
+    <section class="section" data-reveal>
+      <h2><span aria-hidden="true">✨</span> What I love most about you</h2>
+      <p>
+        What I love most about you is how supportive and caring you are. You always seem to understand what’s in my heart without me having to explain it. Your kindness, attention, and the little things you do make you so special to me.
+      </p>
+    </section>
+
+    <section class="section" data-reveal>
+      <h2><span aria-hidden="true">📖</span> Our story</h2>
+      <p>
+        Our story started when we met at work, and from that moment, a beautiful friendship began. Every day, I discovered more and more how special you are and how close you became to my heart.
+      </p>
+    </section>
+
+    <section class="section" data-reveal>
+      <h2><span aria-hidden="true">🌟</span> Dreams together</h2>
+      <p>
+        I wish for you to achieve every beautiful dream you have — to buy the horse you love, get the car you’ve always wanted, travel the world the way you dream of, and always stay happy, successful, and shining.
+      </p>
+    </section>
+
+    <div class="memories">
+      <h2>Shared memories</h2>
+      <div class="gallery" id="gallery" data-reveal>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.28 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>A moment to keep</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.28 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Together</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.29 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Smiles</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.29 AM (2).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Your light</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.29 AM (3).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Us</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.29 AM (4).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Another chapter</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.14.29 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Forever grateful</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.36 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Golden hour</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.36 AM (2).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Side by side</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.36 AM (3).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Laughter</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.36 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Home in a friend</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.37 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>That day</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.38 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Soft light</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.39 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Still remember</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.39 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Little joys</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.40 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Same sky</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.40 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Held close</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.41 AM (1).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Your smile</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.41 AM (2).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>Proof of us</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.39.41 AM (3).jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>More to come</figcaption>
+        </figure>
+        <figure>
+          <img src="WhatsApp Image 2026-05-15 at 12.41.00 AM.jpeg" alt="Memory together" loading="lazy" />
+          <figcaption>For always</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <footer>
+      <p>Made with <span class="heart-inline">love</span> for Rahofa · May 15</p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      document.querySelectorAll("#gallery figure").forEach(function (el, i) {
+        el.style.setProperty("--stagger", String(i));
+      });
+    })();
+
+    (function () {
+      var container = document.getElementById("hearts");
+      var hearts = ["❤", "💕", "✨", "🤍", "💗"];
+      for (var i = 0; i < 24; i++) {
+        var el = document.createElement("span");
+        el.className = "heart";
+        el.textContent = hearts[i % hearts.length];
+        el.style.left = Math.random() * 100 + "%";
+        el.style.animationDuration = 10 + Math.random() * 14 + "s";
+        el.style.animationDelay = Math.random() * 8 + "s";
+        el.style.fontSize = 0.7 + Math.random() * 0.8 + "rem";
+        container.appendChild(el);
+      }
+    })();
+
+    (function () {
+      var nodes = document.querySelectorAll("[data-reveal]");
+      if (!("IntersectionObserver" in window)) {
+        nodes.forEach(function (n) { n.classList.add("visible"); });
+        return;
+      }
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      );
+      nodes.forEach(function (n) { io.observe(n); });
+    })();
+  </script>
+</body>
+</html>
